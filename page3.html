@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love, Sk Farhana</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #e83e8c;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .heart-container {
+            position: relative;
+            height: 60px;
+            margin: 1rem 0;
+        }
+        
+        .heart {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e83e8c;
+            font-size: 2.5rem;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+            animation: slideUp 1s ease-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #e83e8c;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .card p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .photo-placeholder {
+            height: 180px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-weight: 300;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .memories {
+            margin-top: 1rem;
+        }
+        
+        .memory-item {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .memory-item:before {
+            content: "❤";
+            position: absolute;
+            left: 0;
+            color: #e83e8c;
+        }
+        
+        .promise-list {
+            padding-left: 1.5rem;
+        }
+        
+        .promise-list li {
+            margin-bottom: 1rem;
+        }
+        
+        .music-player {
+            width: 100%;
+            background-color: #e83e8c;
+            color: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        .player-title {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .controls button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .controls button:hover {
+            transform: scale(1.2);
+        }
+        
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #555;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #e83e8c;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.4);
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(232, 62, 140, 0.5);
+        }
+        
+        .forgive-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        .countdown {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .countdown h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .countdown-item {
+            background-color: white;
+            border-radius: 10px;
+            width: 80px;
+            padding: 0.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .countdown-number {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #e83e8c;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: translateX(-50%) scale(1); }
+            25% { transform: translateX(-50%) scale(1.1); }
+            50% { transform: translateX(-50%) scale(1); }
+            75% { transform: translateX(-50%) scale(1.1); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sk Farhana</h1>
+            <p class="subtitle">The most special person in my world</p>
+            <div class="heart-container">
+                <div class="heart">❤️</div>
+            </div>
+        </header>
+        
+        <div class="card">
+            <h2>I'm Sorry</h2>
+            <p>Dear Farhana, I know I've made a mistake, and I'm truly sorry for hurting you. You mean everything to me, and seeing you upset breaks my heart. I've created this page just for you as a small gesture to show how much you mean to me and how sincerely sorry I am.</p>
+            <p>Please know that I cherish every moment we spend together, and I'm committed to making things better between us. I hope this little digital gift brings a smile to your beautiful face.</p>
+            <div style="text-align:center;">
+                <a href="#forgive" class="button forgive-btn">Can You Forgive Me?</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Why You're Amazing</h2>
+            <p>Sk Farhana, you are extraordinary in every way. Here are just a few of the countless reasons why you light up my life:</p>
+            <ul class="promise-list">
+                <li>Your smile brightens even my darkest days</li>
+                <li>Your kindness and compassion touch everyone around you</li>
+                <li>Your intelligence and wit never cease to amaze me</li>
+                <li>The way you pursue your passions inspires me daily</li>
+                <li>Your strength in facing challenges makes me proud</li>
+                <li>The sound of your laughter is my favorite melody</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>Our Beautiful Memories</h2>
+            <p>Every moment with you becomes a cherished memory that I hold close to my heart. Remember these special times we've shared?</p>
+            
+            <div class="memories">
+                <div class="memory-item">Our first date when we couldn't stop talking until the restaurant closed</div>
+                <div class="memory-item">That rainy afternoon when we danced without music</div>
+                <div class="memory-item">When you held my hand during that scary movie (even though you were more frightened than me)</div>
+                <div class="memory-item">Our midnight phone calls that last for hours</div>
+                <div class="memory-item">The time we got lost on our road trip but discovered that amazing little café</div>
+            </div>
+            
+            <div class="photo-gallery">
+                <div class="photo-placeholder">Our First Date</div>
+                <div class="photo-placeholder">Birthday Celebration</div>
+                <div class="photo-placeholder">Beach Vacation</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>My Promises To You</h2>
+            <p>Moving forward, I want to be better for you. Here's my commitment:</p>
+            <ul class="promise-list">
+                <li>I promise to listen more attentively when you speak</li>
+                <li>I promise to be more thoughtful and considerate of your feelings</li>
+                <li>I promise to surprise you with little gestures that show my love</li>
+                <li>I promise to support your dreams and ambitions wholeheartedly</li>
+                <li>I promise to work on my flaws and be the person you deserve</li>
+                <li>I promise to create more beautiful memories with you</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>Our Song</h2>
+            <div class="music-player">
+                <div class="player-title">Click to play our special song</div>
+                <div class="controls">
+                    <button onclick="alert('Imagine your favorite song playing now... 🎵')">▶️</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" id="forgive">
+            <h2>Will You Forgive Me?</h2>
+            <p style="text-align:center;">Dear Farhana, having you in my life is the greatest blessing. I'm truly sorry for upsetting you, and I hope you can find it in your heart to forgive me.</p>
+            <div style="text-align:center; margin-top: 2rem;">
+                <button class="button" onclick="document.getElementById('response').style.display='block'">Yes ❤️</button>
+                <button class="button" onclick="this.innerText='Please? 🥺'; this.onclick=function(){document.getElementById('response').style.display='block'}" style="background-color:#6c757d; margin-left:1rem;">No</button>
+            </div>
+            <div id="response" style="display:none; text-align:center; margin-top:2rem; animation: fadeIn 1s ease-in;">
+                <p style="font-size:1.2rem;">Thank you, my love! You've made me the happiest person in the world!</p>
+                <p>I promise to make it up to you. How about a special date this weekend?</p>
+            </div>
+        </div>
+        
+        <div class="countdown">
+            <h3>Time Since I Fell In Love With You</h3>
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">∞</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">∞</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">∞</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">∞</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Created with ❤️ especially for Sk Farhana</p>
+            <p>You are loved today, tomorrow, and always</p>
+        </div>
+    </div>
+    
+    <script>
+        // Simple animation for counters
+        let count = 0;
+        setInterval(() => {
+            count++;
+            document.getElementById('days').textContent = Math.floor(count/86400);
+            document.getElementById('hours').textContent = Math.floor((count % 86400) / 3600);
+            document.getElementById('minutes').textContent = Math.floor((count % 3600) / 60);
+            document.getElementById('seconds').textContent = count % 60;
+        }, 1000);
+    </script>
+</body>
+</html>
